@@ -84,7 +84,7 @@ Route::post('/webhook', function () {
     chdir('/home/uaedubaivisa/public_html/easybussiness2');
 
     // Pull the latest changes from the GitHub repository for the specified branch
-    exec('git pull origin ' . $branch);
+    exec('git pull origin master');
 
     return response()->json(['message' => 'Webhook successfully executed'], 200);
 });
