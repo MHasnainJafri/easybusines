@@ -271,7 +271,7 @@ class MainController extends Controller
                 'message' => 'User not found',
             ], 404);
         } else {
-            $user = Forgotpin::createOrUpdate([
+            $user = Forgotpin::updateOrCreate([
                 'phonenumber' => $request->phonenumber,
             ],[
                 'phonenumber' => $request->phonenumber,
