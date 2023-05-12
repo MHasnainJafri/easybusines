@@ -43,4 +43,23 @@ Route::controller(ProfitController::class)->group(function(){
 
 });
 
+Route::post('/webhook', function () {
+    // Get the payload from the GitHub webhook request
+    $payload = json_decode(request()->getContent());
 
+    // Check if the payload is valid and contains the correct event type
+    if (!$payload || request()->header('X-GitHub-Event') !== 'push') {
+        return response()->json(['error' => 'Invalid payload or event type'], 400);
+    }
+
+    // Specify the branch to pull changes from
+    $branch = 'master';
+
+    // Change to the root directory of your Laravel project on the cPanel server
+    chdir('/home/uaedubaivisa/public_html/easybussiness2');
+
+    // Pull the latest changes from the GitHub repository for the specified branch
+    exec('git pull origin ' . $branch);
+
+    return response()->json(['message' => 'Webhook successfully executed'], 200);
+});
