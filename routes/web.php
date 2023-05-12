@@ -42,7 +42,7 @@ Route::controller(ProfitController::class)->group(function(){
 
 
 });
-
+//web hook added
 Route::post('/webhook', function () {
     // Get the payload from the GitHub webhook request
     $payload = json_decode(request()->getContent());
