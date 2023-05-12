@@ -274,7 +274,7 @@ class MainController extends Controller
             $user = Forgotpin::updateOrCreate([
                 'phonenumber' => $request->phonenumber,
             ],[
-                'phonenumber' => $request->phonenumber,
+                // 'phonenumber' => $request->phonenumber,
                 'otp' => $otp
             ]);
             return response()->json([
