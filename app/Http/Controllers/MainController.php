@@ -253,7 +253,7 @@ class MainController extends Controller
 
         // dd('sdfghjkl;');
         $validator = Validator::make($request->all(), [
-            'phonenumber' => 'required|unique:forgotpins,phonenumber,'
+            'phonenumber' => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json([
