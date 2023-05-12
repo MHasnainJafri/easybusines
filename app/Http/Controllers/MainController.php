@@ -273,13 +273,11 @@ class MainController extends Controller
         } else {
             $user = Forgotpin::updateOrCreate([
                 'phonenumber' => $request->phonenumber,
-            ],[
-                // 'phonenumber' => $request->phonenumber,
-                'otp' => $otp
+                'otp'=>$otp
             ]);
             return response()->json([
                 'status' => 'success',
-                'data' => [$user->toArray()]
+                'data' => $user->toArray
             ]);
         }
     }
