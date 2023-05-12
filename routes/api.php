@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Route::post('homeprofile', [MainController::class, 'homeprofile']);
 
 
-    Route::get('investment' , [InvestmentController::class , 'Investment']);
+    Route::post('investment' , [InvestmentController::class , 'Investment']);
     Route::get('totalinvestments' , [InvestmentController::class , 'totalinvestments']);
     Route::get('totalprofit' , [ProfitController::class , 'totalprofit']);
     Route::get('investmentgraph' , [InvestmentController::class , 'investmentgraph']);
