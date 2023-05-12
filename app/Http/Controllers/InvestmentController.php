@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Investment;
 use App\Models\User;
+use App\Models\Investment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class InvestmentController extends Controller
 {
@@ -20,6 +21,18 @@ class InvestmentController extends Controller
                 'status' => 'fail',
                 'message' => 'User not found',
             ], 404);
+        }
+
+
+
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'fail',
+                'message' => $validator->errors()->first(),
+            ], 400);
         }
         //  return $user;
         if ($request->amount <= $user->amount) {

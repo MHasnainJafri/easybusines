@@ -237,7 +237,7 @@ class MainController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'updated successfull',
-            'data' => [$user->toArray()]
+            'data' => $user->toArray
         ], 200);
     }
 
@@ -263,7 +263,7 @@ class MainController extends Controller
         }
         //   Auth::user();
         $otp = Rand(10000, 99999);
-        $user = User::where(['phonenumber' => $request->phonenumber])->get()->first();
+        $user = User::where(['phonenumber' => $request->phonenumber])->first();
 
         if (!$user) {
             return response()->json([

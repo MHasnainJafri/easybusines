@@ -46,11 +46,11 @@ class UserprofileControlller extends Controller
         //
         $validator = Validator::make($request->all(), [
             'name' => 'nullable|sometimes|string|max:255',
-            'phonenumber'=> 'nullable|sometimes|max:11|unique:users,phonenumber',
-            'email' => 'nullable|sometimes|email|max:255|unique:users,email,',
+            'phonenumber'=> 'nullable|sometimes|max:11',
+            'email' => 'nullable|sometimes|email|max:255|',
             'pin' => 'nullable|sometimes|min:5',
             'confirm_pin' => 'nullable|sometimes|same:pin',
-            'image' => 'nullable|sometimes|file|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
             // add other optional parameters as needed
         ]);
 
